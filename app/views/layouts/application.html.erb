@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sportsprof</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title>SportsProf</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<p id="notice"><%= notice %></p>
-<p id="alert"><%= alert %></p>
-<%= yield %>
-
+<div id="header">
+  <div id="banner">
+    <%= link_to "SportsProf", root_path %>
+  </div>
+  <div id="navigation">
+    <div id="home"> |
+      <% if user_signed_in? %>
+        <%= link_to 'My Profiles', roles_path(:user_id => current_user) %> |
+      <% end %>
+    </div>
+    <div id="login"> |
+      <% if user_signed_in? %>
+        <%= link_to current_user.email, edit_user_registration_path %> |
+        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, :confirm => "Sign out?" %> |
+      <% else %>
+        <%= link_to 'Sign in', new_user_session_path %> |
+      <% end %>
+    </div>
+  </div>
+</div>
+<div id="columns">
+  <div id="side">
+    <%= yield :side %>
+  </div>
+  <div id="main">
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>

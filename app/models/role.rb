@@ -3,4 +3,12 @@ class Role < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :profile, :polymorphic => true
+
+  def name
+    "#{profile.name} (#{profile_type})"
+  end
+
+  def to_s
+    name
+  end
 end

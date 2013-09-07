@@ -12,20 +12,40 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
-  </div>
-  <div class="field">
-    <%= f.label :date_of_birth %><br />
-    <%= f.date_select :date_of_birth %>
+  <table>
+    <tr>
+      <td align="right">
+	<%= f.label :first_name %>
+      </td>
+      <td>
+	<%= f.text_field :first_name %>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">
+	<%= f.label :last_name %>
+      </td>
+      <td>
+	<%= f.text_field :last_name %>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">
+	<%= f.label :date_of_birth %>
+      </td>
+      <td>
+	<%= f.text_field :date_of_birth %>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">
+	<%= f.label :gender %>
+      </td>
+      <td>
+	<%= f.select :gender, Athlete::GENDERS, :include_blank => true %>
+      </td>
+    </tr>
+  </table>
   </div>
   <div class="actions">
     <%= f.submit %>

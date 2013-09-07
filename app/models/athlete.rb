@@ -5,5 +5,19 @@ class Athlete < ActiveRecord::Base
 
   GENDERS = %w{ F M }
 
+  validates :first_name, :last_name, :presence => true
   validates :gender, :inclusion => GENDERS
+
+
+  def user
+    role.user
+  end
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+
+  def to_s
+    name
+  end
 end

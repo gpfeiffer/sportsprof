@@ -2,7 +2,12 @@ class RolesController < ApplicationController
   # GET /roles
   # GET /roles.json
   def index
-    @roles = Role.all
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @roles = @user.roles
+    else
+      @roles = Role.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
