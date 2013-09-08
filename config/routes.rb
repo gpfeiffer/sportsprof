@@ -1,4 +1,7 @@
 Sportsprof::Application.routes.draw do
+  resources :messages
+
+
   resources :coaches
 
 
