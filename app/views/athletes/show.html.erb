@@ -6,6 +6,11 @@
   <%= @athlete.date_of_birth %>
 </p>
 
+<p>
+  <b>Gender:</b>
+  <%= @athlete.gender %>
+</p>
+
 
 <% if can? :edit, @athlete %>
   <%= link_to 'Edit', edit_athlete_path(@athlete) %> |

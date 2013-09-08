@@ -1,29 +1,8 @@
-<h1>Listing athletes</h1>
+<h1>Athletes</h1>
 
-<table>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Gender</th>
-    <th>Date of birth</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<ul>
 <% @athletes.each do |athlete| %>
-  <tr>
-    <td><%= athlete.first_name %></td>
-    <td><%= athlete.last_name %></td>
-    <td><%= athlete.gender %></td>
-    <td><%= athlete.date_of_birth %></td>
-    <td><%= link_to 'Show', athlete %></td>
-    <td><%= link_to 'Edit', edit_athlete_path(athlete) %></td>
-    <td><%= link_to 'Destroy', athlete, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<li><%= link_to athlete, athlete %></li>
 <% end %>
-</table>
+</ul>
 
-<br />
-
-<%= link_to 'New Athlete', new_athlete_path %>
