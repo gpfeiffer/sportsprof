@@ -14,7 +14,10 @@
   <div id="navigation">
     <div id="home"> |
       <% if user_signed_in? %>
-        <%= link_to 'My Profiles', roles_path(:user_id => current_user) %> |
+        <%= link_to 'My Profiles', roles_path %> |
+	<% if current_user.role %>
+          <%= link_to current_user.role, current_user.role.profile %> |
+	<% end %>
       <% end %>
     </div>
     <div id="login"> |

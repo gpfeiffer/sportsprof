@@ -1,9 +1,9 @@
-<h3><%= @user.email %></h3>
-<h2>Profiles</h3>
+<h2>My Profiles</h2>
 
+Choose a new profile:
 <ul>
-<% @roles.each do |role| %>
-<li><%= link_to role, role.profile %></li>
-<% end %>
+  <% @roles.each do |role| %>
+    <li><%= link_to role, role %></li>
+  <% end %>
 </ul>
 
