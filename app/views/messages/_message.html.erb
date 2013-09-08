@@ -1,0 +1,23 @@
+<hr />
+<div class="message">
+<p>
+  <b>From:</b>
+  <%= message.sender %>
+</p>
+
+<p>
+  <b>To:</b>
+  <%= message.receiver %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= message.subject %>
+</p>
+
+<p>
+  <%= message.body %>
+</p>
+
+| <%= link_to 'Delete', message, :confirm => 'Are you sure?', :method => :delete %> |
+</div>

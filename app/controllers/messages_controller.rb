@@ -2,7 +2,12 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    if params[:role_id]
+      @role = Role.find(params[:role_id])
+      @messages = @role.messages
+    else
+      @messages = Message.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +30,8 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     @message = Message.new
+    @message.sender = current_user.role
+    @message.receiver = Role.find(params[:role_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +51,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to @message.receiver, notice: 'Message was successfully created.' }
         format.json { render json: @message, status: :created, location: @message }
       else
         format.html { render action: "new" }
@@ -60,7 +67,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.update_attributes(params[:message])
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
+        format.html { redirect_to @message.receiver, notice: 'Message was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +83,7 @@ class MessagesController < ApplicationController
     @message.destroy
 
     respond_to do |format|
-      format.html { redirect_to messages_url }
+      format.html { redirect_to @message.receiver }
       format.json { head :no_content }
     end
   end

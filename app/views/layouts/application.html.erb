@@ -16,7 +16,11 @@
       <% if user_signed_in? %>
         <%= link_to 'My Profiles', roles_path %> |
 	<% if current_user.role %>
-          <%= link_to current_user.role, current_user.role.profile %> |
+          <% role = current_user.role %>
+          <%= link_to role, role.profile %> |
+	  <% if role.messages.any? %>
+            <%= link_to 'Messages', messages_path(:role_id => role) %> |
+          <% end %>
 	<% end %>
       <% end %>
     </div>

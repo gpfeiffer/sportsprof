@@ -18,4 +18,5 @@
 <% if can? :destroy, @athlete %>
   <%= link_to 'Delete', @athlete, :confirm => 'Are you sure?', :method => :delete %> |
 <% end %>
+<%= link_to 'Message', new_message_path(:role_id => @athlete.role) %> |
 <%= link_to 'Back', athletes_path %>
