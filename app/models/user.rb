@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validate :role_must_belong_to_user
 
   def role_must_belong_to_user
-    if !role_ids.include?(role_id)
+    if role_id && !role_ids.include?(role_id)
       errors.add(:role_id, "must belong to user")
     end
   end
