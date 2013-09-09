@@ -41,7 +41,10 @@ class AthletesController < ApplicationController
 
     respond_to do |format|
       if @athlete.save
-        format.html { redirect_to @athlete, notice: 'Athlete was successfully created.' }
+        format.html { 
+          current_user.update_attributes( :role_id => @athlete.role.id )
+          redirect_to @athlete, notice: 'Athlete was successfully created.' 
+        }
         format.json { render json: @athlete, status: :created, location: @athlete }
       else
         format.html { render action: "new" }
