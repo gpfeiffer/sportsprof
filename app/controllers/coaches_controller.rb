@@ -1,4 +1,5 @@
 class CoachesController < ApplicationController
+  skip_before_filter :authenticate_user!, :only => :index
   load_and_authorize_resource
 
   # GET /coaches
