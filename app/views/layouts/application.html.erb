@@ -19,7 +19,7 @@
           <% role = current_user.role %>
           <%= link_to role, role.profile %> |
 	  <% if role.messages.any? %>
-            <%= link_to 'Messages', messages_path(:role_id => role) %> |
+            <%= link_to pluralize(role.messages.count, 'Message'), messages_path(:role_id => role) %> |
           <% end %>
 	<% end %>
       <% end %>

@@ -1,0 +1,42 @@
+<h3>Admins</h3>
+<h2><%= @admin.name %></h2>
+
+<% if can? :edit, @admin %>
+  <%= link_to 'Edit', edit_admin_path(@admin) %> |
+<% end %>
+<% if can? :destroy, @admin %>
+  <%= link_to 'Delete', @admin, :confirm => 'Are you sure?', :method => :delete %> |
+<% end %>
+<%= link_to 'Message', new_message_path(:role_id => @admin.role) %> |
+<%= link_to 'Back', admins_path %>
+
+
+<% if can? :destroy, @admin %>
+<h2>Roles</h2>
+<table>
+<% Role.all.each do |role| %>
+<tr>
+  <td><%= role.name %></td>
+  <td><%= role.user.email %></td>
+</tr>
+<% end %>
+</table>
+
+<h2>Users</h2>
+<table>
+  <th>User</th>
+  <th>#</th>
+  <th>current</th>
+  <th>last</th>
+  <th>#roles</th>
+<% User.all.each do |user| %>
+<tr>
+  <td><%= user.email %></td>
+  <td><%= user.sign_in_count %></td>
+  <td><%= user.current_sign_in_at %></td>
+  <td><%= user.last_sign_in_at %></td>
+  <td><%= user.roles.count %></td>
+</tr>
+<% end %>
+</table>
+<% end %>

@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def role? symbol
-    false
+  def admin?
+    role && role.profile_type == "Admin"
   end
 end

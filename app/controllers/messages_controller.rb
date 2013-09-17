@@ -83,7 +83,7 @@ class MessagesController < ApplicationController
     @message.destroy
 
     respond_to do |format|
-      format.html { redirect_to @message.receiver }
+      format.html { redirect_to messages_path(:role_id =>@message.receiver) }
       format.json { head :no_content }
     end
   end

@@ -7,3 +7,11 @@ Choose a new profile:
   <% end %>
 </ul>
 
+Create a new profile:
+<ul>
+  <% if can? :create, Admin %>
+    <li><%= link_to 'Create New Admin Profile', new_admin_path %></li>
+  <% end %>
+  <li><%= link_to 'Create New Athlete Profile', new_athlete_path %></li>
+  <li><%= link_to 'Create New Coach Profile', new_coach_path %></li>
+</ul>
