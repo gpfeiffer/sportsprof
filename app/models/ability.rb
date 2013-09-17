@@ -7,7 +7,7 @@ class Ability
     if user.admin?
       can :manage, :all
     else
-      can [:create, :read], [Admin, Athlete, Coach]
+      can [:create, :read], [Athlete, Coach]
       can :update, Athlete do |athlete|
         athlete.user == user
       end
