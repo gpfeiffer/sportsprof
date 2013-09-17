@@ -48,3 +48,5 @@ gem 'jquery-ui-rails'
 gem "devise"
 gem "cancan"
 gem 'bluecloth'
+
+gem 'rails_12factor'
