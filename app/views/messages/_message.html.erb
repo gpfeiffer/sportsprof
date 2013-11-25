@@ -19,5 +19,7 @@
   <%= message.body %>
 </p>
 
-| <%= link_to 'Delete', message, :confirm => 'Are you sure?', :method => :delete %> |
+| <%= link_to 'Delete', message, :confirm => 'Are you sure?', :method => :delete %> 
+| <%= link_to 'Reply', new_message_path(:role_id => message.sender, :subject => 'Re: ' + message.subject) %> 
+|
 </div>

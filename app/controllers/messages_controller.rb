@@ -32,6 +32,7 @@ class MessagesController < ApplicationController
     @message = Message.new
     @message.sender = current_user.role
     @message.receiver = Role.find(params[:role_id])
+    @message.subject = params[:subject]
 
     respond_to do |format|
       format.html # new.html.erb

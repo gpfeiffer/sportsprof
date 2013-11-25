@@ -24,11 +24,13 @@
 
 <h2>Users</h2>
 <table>
+<tr>
   <th>User</th>
   <th>#</th>
   <th>current</th>
   <th>last</th>
   <th>#roles</th>
+</tr>
 <% User.all.each do |user| %>
 <tr>
   <td><%= user.email %></td>
@@ -40,3 +42,21 @@
 <% end %>
 </table>
 <% end %>
+
+<h2>Messages</h2>
+<table>
+<tr>
+  <th>From</th>
+  <th>To</th>
+  <th>Subject</th>
+  <th>Date</th>
+</tr>
+<% Message.all.each do |message| %>
+<tr>
+  <td><%= message.sender %></td>
+  <td><%= message.receiver %></td>
+  <td><%= message.subject %></td>
+  <td><%= message.created_at %></td>
+</tr>
+<% end %>
+</table>
