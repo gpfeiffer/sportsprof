@@ -43,7 +43,7 @@ class AdminsController < ApplicationController
     respond_to do |format|
       if @admin.save
         format.html { 
-          current_user.update_attributes( :role_id => @admin.role.id )
+          current_user.update_attribute(:role_id, @admin.role.id)
           redirect_to @admin, notice: 'Admin was successfully created.' 
         }
         format.json { render json: @admin, status: :created, location: @admin }
