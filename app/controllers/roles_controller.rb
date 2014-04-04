@@ -15,7 +15,7 @@ class RolesController < ApplicationController
   # GET /roles/1.json
   def show
     @role = Role.find(params[:id])
-    current_user.update_attributes( :role_id => @role.id )
+    current_user.update_attribute(:role_id, => @role.id)
 
     respond_to do |format|
       format.html { redirect_to @role.profile } 
